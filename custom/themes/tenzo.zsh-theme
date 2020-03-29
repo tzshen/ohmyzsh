@@ -5,6 +5,5 @@ function tenzo_git_prompt_info() {
   echo "(${ref#refs/heads/}) "
 }
 
-PROMPT='%{$fg[cyan]%}%~%{$reset_color%} %F{242}$(tenzo_git_prompt_info)'
-PROMPT+="%(?:%{$fg[green]%}❯:%{$fg[red]%}❯)"
-PROMPT+="%{$reset_color%} "
+PROMPT='%F{cyan}%~%f %F{magenta}$(tenzo_git_prompt_info)'
+PROMPT+="%(?:%F{green}:%F{red})❯%f "
