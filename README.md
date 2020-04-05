@@ -117,28 +117,6 @@ Open up a new terminal window and your prompt should look something like this:
 
 In case you did not find a suitable theme for your needs, please have a look at the wiki for [more of them](https://github.com/ohmyzsh/ohmyzsh/wiki/External-themes).
 
-If you're feeling feisty, you can let the computer select one randomly for you each time you open a new terminal window.
-
-
-```shell
-ZSH_THEME="random" # (...please let it be pie... please be some pie..)
-```
-
-And if you want to pick random theme from a list of your favorite themes:
-
-```shell
-ZSH_THEME_RANDOM_CANDIDATES=(
-  "robbyrussell"
-  "agnoster"
-)
-```
-
-If you only know which themes you don't like, you can add them similarly to a blacklist:
-
-```shell
-ZSH_THEME_RANDOM_BLACKLIST=(pygmalion tjkirch_mod)
-```
-
 ### FAQ
 
 If you have some more questions or issues, you might find a solution in our [FAQ](https://github.com/ohmyzsh/ohmyzsh/wiki/FAQ).
@@ -247,30 +225,6 @@ If you want to override any of the default behaviors, just add a new file (endin
 If you have many functions that go well together, you can put them as a `XYZ.plugin.zsh` file in the `custom/plugins/` directory and then enable this plugin.
 
 If you would like to override the functionality of a plugin distributed with Oh My Zsh, create a plugin of the same name in the `custom/plugins/` directory and it will be loaded instead of the one in `plugins/`.
-
-## Getting Updates
-
-By default, you will be prompted to check for upgrades every few weeks. If you would like `oh-my-zsh` to automatically upgrade itself without prompting you, set the following in your `~/.zshrc`:
-
-```shell
-DISABLE_UPDATE_PROMPT=true
-```
-
-To disable automatic upgrades, set the following in your `~/.zshrc`:
-
-```shell
-DISABLE_AUTO_UPDATE=true
-```
-
-### Manual Updates
-
-If you'd like to upgrade at any point in time (maybe someone just released a new plugin and you don't want to wait a week?) you just need to run:
-
-```shell
-upgrade_oh_my_zsh
-```
-
-Magic! 🎉
 
 ## Uninstalling Oh My Zsh
 
