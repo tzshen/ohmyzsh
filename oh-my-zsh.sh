@@ -10,7 +10,7 @@ fi
 fpath=($ZSH/functions $ZSH/completions $fpath)
 
 # Load all stock functions (from $fpath files) called below.
-autoload -U compaudit compinit
+autoload -U compinit
 
 # Set ZSH_CUSTOM to the path where your custom config files
 # and plugins exists, or else we will use the default custom/
@@ -51,17 +51,8 @@ if [ -z "$ZSH_COMPDUMP" ]; then
   ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 fi
 
-if [[ $ZSH_DISABLE_COMPFIX != true ]]; then
-  source $ZSH/lib/compfix.zsh
-  # If completion insecurities exist, warn the user
-  handle_completion_insecurities
-  # Load only from secure directories
-  compinit -i -C -d "${ZSH_COMPDUMP}"
-else
-  # If the user wants it, load from all found directories
-  compinit -u -C -d "${ZSH_COMPDUMP}"
-fi
-
+# Load only from secure directories
+compinit -i -C -d "${ZSH_COMPDUMP}"
 
 # Load all of the config files in ~/oh-my-zsh that end in .zsh
 # TIP: Add files you don't want in git to .gitignore
