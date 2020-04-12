@@ -18,7 +18,6 @@ if [[ -z "$ZSH_CUSTOM" ]]; then
     ZSH_CUSTOM="$ZSH/custom"
 fi
 
-
 is_plugin() {
   local base_dir=$1
   local name=$2
@@ -38,21 +37,18 @@ for plugin ($plugins); do
   fi
 done
 
-# Figure out the SHORT hostname
-if [[ "$OSTYPE" = darwin* ]]; then
-  # macOS's $HOST changes with dhcp, etc. Use ComputerName if possible.
-  SHORT_HOST=$(scutil --get ComputerName 2>/dev/null) || SHORT_HOST=${HOST/.*/}
-else
-  SHORT_HOST=${HOST/.*/}
-fi
-
-# Save the location of the current completion dump file.
-if [ -z "$ZSH_COMPDUMP" ]; then
-  ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
-fi
-
 # Load only from secure directories
-compinit -i -C -d "${ZSH_COMPDUMP}"
+compinit -i -C
+# # Load and initialize the completion system ignoring insecure directories with a
+# # cache time of 20 hours, so it should almost always regenerate the first time a
+# # shell is opened each day.
+# _comp_files=(${ZDOTDIR:-$HOME}/.zcompdump(Nmh-20))
+# if (( $#_comp_files )); then
+#   compinit -i -C
+# else
+#   compinit -i
+# fi
+# unset _comp_files
 
 # Load all of the config files in ~/oh-my-zsh that end in .zsh
 # TIP: Add files you don't want in git to .gitignore

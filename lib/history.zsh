@@ -1,6 +1,6 @@
 ## History file configuration
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
-HISTSIZE=50000
+HISTSIZE=10000
 SAVEHIST=10000
 
 ## History command configuration
